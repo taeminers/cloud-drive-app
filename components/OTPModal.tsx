@@ -73,8 +73,8 @@ const OTPModal = ({
         </AlertDialogHeader>
         <InputOTP maxLength={6} value={password} onChange={setPassword}>
           <InputOTPGroup className="shad-otp">
-            <InputOTPSlot index={1} className="shad-otp-slot" />
             <InputOTPSlot index={0} className="shad-otp-slot" />
+            <InputOTPSlot index={1} className="shad-otp-slot" />
             <InputOTPSlot index={2} className="shad-otp-slot" />
             <InputOTPSlot index={3} className="shad-otp-slot" />
             <InputOTPSlot index={4} className="shad-otp-slot" />
