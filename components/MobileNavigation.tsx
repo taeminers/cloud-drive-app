@@ -10,6 +10,10 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Separator } from "@/components/ui/separator";
+import { navItems } from "@/constants";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface Props {
   ownerId: string;
@@ -62,12 +66,38 @@ const MobileNavigation = ({
                 <p className="caption">{email}</p>
               </div>
             </div>
-            Are you absolutely sure?
+            <Separator className="mb-4 bg-light-200/20" />
           </SheetTitle>
-          <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </SheetDescription>
+          <nav className="mobile-nav">
+            <ul className="mobile-nav-list">
+              {navItems.map(({ url, name, icon }) => (
+                <Link href={url} key={name} className="lg:w-full">
+                  <li
+                    className={cn(
+                      "mobile-nav-item",
+                      pathname === url && "shad-active"
+                    )}
+                  >
+                    <Image
+                      src={icon}
+                      alt={name}
+                      width={24}
+                      height={24}
+                      className={cn(
+                        "nav-icon",
+                        pathname === url && "nav-icon-active"
+                      )}
+                    />
+                    <p>{name}</p>
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </nav>
+          <Separator className="my-5 bg-light-200/20" />
+          <div className="flex flex-col justify-between gap-5 pb-5">
+            FileUploader
+          </div>
         </SheetContent>
       </Sheet>
     </header>
